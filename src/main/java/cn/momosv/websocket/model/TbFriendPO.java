@@ -1,8 +1,10 @@
 package cn.momosv.websocket.model;
 
+import cn.momosv.websocket.model.base.IBaseDBPO;
+
 import java.util.Date;
 
-public class TbFriendPO {
+public class TbFriendPO extends IBaseDBPO{
     private String id;
 
     private String userId;
@@ -51,5 +53,25 @@ public class TbFriendPO {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String _getTableName() {
+        return "tb_friend";
+    }
+
+    @Override
+    public String _getPKValue() {
+        return id;
+    }
+
+    @Override
+    public void _setPKValue(Object var1) {
+        this.id= (String) var1;
+    }
+
+    @Override
+    public  String  _getPKColumnName(){
+        return "id";
     }
 }

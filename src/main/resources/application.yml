@@ -22,63 +22,86 @@ spring:
       default_encoding: UTF-8
       classic_compatible: true
 
-    session:
-        store-type: none
+  session:
+      store-type: none
 
-    datasource:
+  datasource:
+  #123.207.23.166:3306
+    name: db
+    url: jdbc:mysql://119.29.208.67:3306/ws?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true
+    username: momo
+    password: MOcj520.
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    minIdle: 5
+    maxActive: 100
+    initialSize: 10
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 50
+    removeAbandoned: true
+    filters: stat
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    useGlobalDataSourceStat: true # 合并多个DruidDataSource的监控数据
+    druidLoginName: momo # 登录druid的账号
+    druidPassword: momo # 登录druid的密码
+
+  datasource2:
     #123.207.23.166:3306
-        name: db
-        url: jdbc:mysql://119.29.208.67:3306/ws?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true
-        username: momo
-        password: MOcj520.
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.alibaba.druid.pool.DruidDataSource
-        minIdle: 5
-        maxActive: 100
-        initialSize: 10
-        maxWait: 60000
-        timeBetweenEvictionRunsMillis: 60000
-        minEvictableIdleTimeMillis: 300000
-        validationQuery: select 'x'
-        testWhileIdle: true
-        testOnBorrow: false
-        testOnReturn: false
-        poolPreparedStatements: true
-        maxPoolPreparedStatementPerConnectionSize: 50
-        removeAbandoned: true
-        filters: stat
-        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
-        useGlobalDataSourceStat: true # 合并多个DruidDataSource的监控数据
-        druidLoginName: momo # 登录druid的账号
-        druidPassword: momo # 登录druid的密码
+      name: db
+      url: jdbc:mysql://localhost:3306/ws?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true
+      username: momo
+      password: MOcj520.
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      minIdle: 5
+      maxActive: 100
+      initialSize: 10
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 50
+      removeAbandoned: true
+
      # HTTP ENCODING
-    http:
-        encoding.charset: UTF-8
-        encoding.enable: true
-        encoding.force: true
-    thymeleaf:
-      cache: false
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+  thymeleaf:
+    cache: false
 
 
       #    order: 1
 
 #邮件
-    mail:
-      host: smtp.exmail.qq.com
-      username: momosv@momosv.cn
-      password: k8f4yavHZ4jQgUnx
-      properties:
-        mail:
-          self:
-            username: momo
-          smtp:
-            socketFactory:
-              class: javax.net.ssl.SSLSocketFactory
-              port: 465
-            auth: true
-            starttls:
-              enable: true
-              required: true
+#  mail:
+#    host: smtp.exmail.qq.com
+#    username: momosv@momosv.cn
+#    password: k8f4yavHZ4jQgUnx
+#    properties:
+#      mail:
+#        self:
+#          username: momo
+#        smtp:
+#          socketFactory:
+#            class: javax.net.ssl.SSLSocketFactory
+#            port: 465
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
 
 
 
@@ -89,10 +112,20 @@ spring:
 #  basic:
 #    enabled: false
 mybatis:
-    mapperLocations: classpath:/mapper/*.xml
-    typeAliasesPackage: cn.momosv.hos.dao
-    mapperScanPackage: cn.momosv.hos.dao
-    configLocation: classpath:/mybatis-config.xml
+  mapper-locations: /mapper/*.xml
+  type-aliases-package: cn.momosv.websocket.dao
+  config-location: classpath:/mybatis-config.xml
+  ext:
+     mapper-locations: /mapper1/*.xml
+     type-aliases-package: cn.momosv.websocket.dao1
+mybatis1:
+  mapper-locations: classpath:/mapper1/*.xml
+  type-aliases-package: cn.momosv.websocket.dao1
+  config-location: cn.momosv.websocket.dao1
+mybatis2:
+  mapper-locations: classpath:/mapper2/*.xml
+  type-aliases-package: cn.momosv.websocket.dao2
+  config-location: cn.momosv.websocket.dao2
 logging:
   config: classpath:logback.xml
   path: logs

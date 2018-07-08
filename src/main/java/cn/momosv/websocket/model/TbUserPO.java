@@ -1,6 +1,8 @@
 package cn.momosv.websocket.model;
 
-public class TbUserPO {
+import cn.momosv.websocket.model.base.IBaseDBPO;
+
+public class TbUserPO extends IBaseDBPO{
     private String id;
 
     private String userName;
@@ -49,5 +51,25 @@ public class TbUserPO {
 
     public void setSex(Byte sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public String _getTableName() {
+        return "tb_user";
+    }
+
+    @Override
+    public String _getPKValue() {
+        return id;
+    }
+
+    @Override
+    public void _setPKValue(Object var1) {
+        this.id= (String) var1;
+    }
+
+    @Override
+    public  String  _getPKColumnName(){
+        return "id";
     }
 }

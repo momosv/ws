@@ -1,8 +1,11 @@
 package cn.momosv.websocket.model;
 
+import cn.momosv.websocket.model.base.IBaseDBPO;
+import jdk.nashorn.internal.ir.ReturnNode;
+
 import java.util.Date;
 
-public class TbFriendMessagePO {
+public class TbFriendMessagePO extends IBaseDBPO{
     private String id;
 
     private String userId;
@@ -61,5 +64,25 @@ public class TbFriendMessagePO {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    @Override
+    public String _getTableName() {
+        return "tb_friend_message";
+    }
+
+    @Override
+    public String _getPKValue() {
+        return id;
+    }
+
+    @Override
+    public void _setPKValue(Object var1) {
+        this.id= (String) var1;
+    }
+
+    @Override
+     public  String  _getPKColumnName(){
+        return "id";
     }
 }

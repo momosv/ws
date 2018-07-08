@@ -27,12 +27,18 @@ import java.util.List;
 import java.util.Map;
 
 
-@Transactional
-@Service("basicService")
 public class BasicServiceImpl<T extends IBaseDBPO, E extends BasicExample> implements BasicService<T, E> {
  
-	@Autowired
-	private BasicMapper<T, E> basicMapper;
+
+	private BasicMapper basicMapper;
+
+	public void setMapper(BasicMapper basicMapper){
+		if (this.basicMapper != null) {
+			}
+
+		this.basicMapper = basicMapper;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll(Class<T> t) throws Exception {

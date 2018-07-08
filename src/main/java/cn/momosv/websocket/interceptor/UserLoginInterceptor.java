@@ -31,9 +31,9 @@ public class UserLoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        System.out.println("开始preHandle,判断请求是否需要拦截");
+       System.out.println("开始preHandle,判断请求是否需要拦截");
         String ip=request.getLocalAddr();
-        if(!ip.equals("127.0.0.1")){
+  /*       if(!ip.equals("127.0.0.1")){
             ip="123.207.23.166";
         }
       //  SysUtil.setBasePath(request,"http://"+ip+":"+request.getLocalPort()+"/");
@@ -51,7 +51,7 @@ public class UserLoginInterceptor implements HandlerInterceptor {
         }
         if(null==request.getSession().getAttribute("user")){
               throw  new Exception("nullUser");
-        }
+        }*/
         return true;
     }
 

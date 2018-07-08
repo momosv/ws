@@ -3,6 +3,7 @@ package cn.momosv.websocket.dataSource;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -82,7 +83,7 @@ public class DatasourceConfig {
 	
     @Bean(name="dataSource",destroyMethod = "close", initMethod="init")
     @Primary //不要漏了这
-    public DataSource dataSource(){  
+    public DataSource dataSource(){
         DruidDataSource datasource = new DruidDataSource();  
         try {  
 	        datasource.setUrl(this.dbUrl);  

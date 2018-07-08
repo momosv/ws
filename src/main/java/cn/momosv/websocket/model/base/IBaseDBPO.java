@@ -20,6 +20,6 @@ public  abstract class IBaseDBPO implements Serializable, Cloneable{
 
 	abstract public String _getPKValue();
 
-	abstract public void _setPKValue(Object var1); 
+	abstract public void _setPKValue(Object var);
 
 }
